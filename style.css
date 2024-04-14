@@ -8,25 +8,66 @@
 }
 
 body{
-    /* background-color: black;
-    color: white; */
+    background-color: black;
+    color: white;
 }
 
 .left{
     width: 25vw;
-    padding: 10px;
+    padding: 5px;
 }
 
 .right{
     width: 75vw;
+    padding: 5px;
+    margin: 10px 0;
 }
 
 .home ul li{
-    width: 15px;
     list-style: none;
     display: flex;
     gap: 15px;
+    width: 15px;
     padding-top: 14px;
     font-weight: bold;
 }
 
+.heading{
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    /* padding-top: 14px; */
+    padding: 0px 0px 10px 0px;
+    font-weight: bold;
+    align-items: center;
+}
+
+.heading img{
+    width: 15px;
+}
+
+.heading h2{
+    font-size: 20px;
+}
+
+/* .playlists{
+    min-height: 40vh;
+    position: relative;
+} */
+
+.library{
+    min-height: 77vh;
+    position: relative;
+}
+
+.footer{
+    display: flex;
+    font-size: 8px;
+    color: grey;
+    gap: 12px;
+    position: absolute;
+    bottom: 0;
+}
+.footer a{
+    color: grey;
+}
