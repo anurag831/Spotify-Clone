@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify</title>
+    <title>Spotify - Web Player: Music for everyone</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css">
 </head>
@@ -42,12 +42,54 @@
             </div>
         </div>
 
-        <div class="right bg-grey rounded p-1">
+        <div class="right bg-grey rounded">
             <div class="header">
-                <div class="nav"></div>
+                <div class="nav">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff"
+                        fill="none">
+                        <path d="M15 6C15 6 9.00001 10.4189 9 12C8.99999 13.5812 15 18 15 18" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff"
+                        fill="none">
+                        <path d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
                 <div class="buttons">
-                    <button>signup</button>
-                    <button>login</button>
+                    <button class="signupbtn">Sign up</button>
+                    <button class="loginbtn">Log in</button>
+                </div>
+            </div>
+
+            <div class="spotify-playlists">
+                <h1>Spotify Palylists</h1>
+                <div class="cardContainer">
+                    <div class="card">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                            <!-- Green circular background -->
+                            <circle cx="50" cy="50" r="45" fill="#4CAF50" />
+                            <!-- Play triangle -->
+                            <polygon points="35,25 80,50 35,75" fill="#000" />
+                        </svg>
+                        <img src="https://i.scdn.co/image/ab67706f0000000254473de875fea0fd19d39037" alt="">
+                        <h2>Lofi beats</h2>
+                        <p>chill beats, lofi vibes, new tracks every week...</p>
+                    </div>
+                    <div class="card">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                            <!-- Green circular background -->
+                            <circle cx="50" cy="50" r="45" fill="#4CAF50" />
+                            <!-- Play triangle -->
+                            <polygon points="35,25 80,50 35,75" fill="#000" />
+                        </svg>
+                        <img src="https://i.scdn.co/image/ab67706f0000000254473de875fea0fd19d39037" alt="">
+                        <h2>Lofi beats</h2>
+                        <p>chill beats, lofi vibes, new tracks every week...</p>
+                    </div>
+                </div>
+                <div class="playbar">
+                    playbar
                 </div>
             </div>
         </div>

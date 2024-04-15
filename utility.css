@@ -39,3 +39,26 @@
 .p-1{
     padding: 10px;
 }
+
+/* Width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #666; /* Darkened color */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darkened color on hover */
+  }
+   
