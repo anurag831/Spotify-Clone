@@ -69,7 +69,7 @@ body{
 }
 
 .right{
-width: 75vw;
+width: 73.7vw;
 margin: 10px 0;
 position: relative;
 }
@@ -79,6 +79,8 @@ position: relative;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(34, 34, 34);
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
 } 
 
 .header>*{
@@ -181,9 +183,17 @@ position: relative;
 
 .playbar{
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     /* width: 90%; */
-    width: calc(75vw - 32px);
-    background-color: green;
+    width: 67vw;
+    background-color: #4caf50;
+    /* background-color: rgb(34, 34, 34); */
     padding: 12px;
+}
+
+.songbuttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
 }
