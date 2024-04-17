@@ -197,3 +197,12 @@ position: relative;
     align-items: center;
     gap: 16px;
 }
+
+.songList ul{
+    padding: 0 42px;
+}
+
+.songList ul li{
+    width: 100px;
+    list-style-type: decimal;
+}
