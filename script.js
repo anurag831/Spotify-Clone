@@ -1,4 +1,5 @@
 // console.log("lets write javascript");
+
 let currentSong = new Audio();
 
 async function getSongs() {
@@ -20,17 +21,34 @@ async function getSongs() {
   return songs;
 }
 
-const playMusic = (track)=>{
-  // let audio = new Audio("/songs/" + track + ".mp3");
-  currentSong.src = "/songs/" + track + ".mp3"
-  currentSong.play();
+const playMusic = (track, pause = false) => {
+  currentSong.src = "/songs/" + track + ".mp3";
+  if (!pause) {
+    currentSong.play();
+    play.src = "pause.svg";
+  }
+  document.querySelector(".songinfo").innerHTML = decodeURI(track);
+  document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
+};
+
+function convertSecondsToMinutesAndSeconds(seconds) {
+  if (isNaN(seconds) || seconds < 0) {
+    return "Invalid input";
+  }
+
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
+
+  const formattedMinutes = String(minutes).padStart(2, "0");
+  const formattedSeconds = String(remainingSeconds).padStart(2, "0");
+
+  return `${formattedMinutes} : ${formattedSeconds}`;
 }
 
 async function main() {
-  
-
   // Get the list of all the songs
   let songs = await getSongs();
+  playMusic(songs[0], true);
 
   //Show all the songs in the playlist
   let songUL = document
@@ -58,21 +76,42 @@ async function main() {
     e.addEventListener("click", (element) => {
       // console.log(e.getElementsByTagName("div")[0].getElementsByTagName("div")[0].innerHTML);
       console.log(e.querySelector(".info").firstElementChild.innerHTML);
-      playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+      playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim());
     });
   });
 
   // Attach an event listener to play, previous and next
-  play.addEventListener("click", ()=>{
-    if(currentSong.paused){
+  play.addEventListener("click", () => {
+    if (currentSong.paused) {
       currentSong.play();
-      play.src = "pause.svg"
-    }
-    else{
+      play.src = "pause.svg";
+    } else {
       currentSong.pause();
-      play.src = play.svg
+      play.src = "play.svg";
     }
+  });
+
+  //Listen for time uodate event
+  currentSong.addEventListener("timeupdate", () => {
+    console.log(currentSong.currentTime, currentSong.duration);
+    document.querySelector(
+      ".songtime"
+    ).innerHTML = `${convertSecondsToMinutesAndSeconds(
+      currentSong.currentTime
+    )} / ${convertSecondsToMinutesAndSeconds(currentSong.duration)}`;
+    document.querySelector(".circle").style.left =
+      (currentSong.currentTime / currentSong.duration) * 100 + "%";
+  });
+
+  //Add an event Listener to seekbar
+  document.querySelector(".seekbar").addEventListener("click",e=>{
+    let percent = (e.offsetX/e.target.getBoundingClientRect().width) * 100;
+    document.querySelector(".circle").style.left = percent + "%";
+    currentSong.currentTime = ((currentSong.duration)*percent)/100;
   })
+
+
+
 }
 
 main();
