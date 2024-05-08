@@ -91,7 +91,7 @@ async function main() {
     }
   });
 
-  //Listen for time uodate event
+  //Listen for time update event
   currentSong.addEventListener("timeupdate", () => {
     console.log(currentSong.currentTime, currentSong.duration);
     document.querySelector(
@@ -110,6 +110,15 @@ async function main() {
     currentSong.currentTime = ((currentSong.duration)*percent)/100;
   })
 
+  //Add event listener for hamburger
+  document.querySelector('.hamburger').addEventListener("click", ()=>{
+    document.querySelector('.left').style.left = '0';
+  })
+  
+  //Add event listener for hamburger
+  document.querySelector('.close').addEventListener("click", ()=>{
+    document.querySelector('.left').style.left = '-120%';
+  })
 
 
 }
