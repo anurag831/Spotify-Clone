@@ -150,12 +150,13 @@ body {
 }
 
 .cardContainer {
+    /* background-color: red; */
     margin: 30px 20px;
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     overflow-y: auto;
-    max-height: 65vh;
+    max-height: 57vh;
     /* justify-content: center; */
 }
 
@@ -201,7 +202,8 @@ body {
     /*10px*/
     height: 40px;
     width: 70vw;
-    background-color: #3a3737;
+    /* background-color: #3a3737; */
+    background-color: #42513d;
     padding: 12px;
     justify-content: space-around;
     gap: 374px;
@@ -415,5 +417,12 @@ body {
 }
 
 .volume input {
+    accent-color: #b8ffc4;
     position: relative;
+}
+
+@media (max-width: 1200px) {
+    .card{
+        width: 78vw;
+    }
 }
