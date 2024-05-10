@@ -1,6 +1,7 @@
 // console.log("lets write javascript");
 
 let currentSong = new Audio();
+let songs;
 
 async function getSongs() {
   let a = await fetch("http://127.0.0.1:3000/songs/");
@@ -33,7 +34,7 @@ const playMusic = (track, pause = false) => {
 
 function convertSecondsToMinutesAndSeconds(seconds) {
   if (isNaN(seconds) || seconds < 0) {
-    return "Invalid input";
+    return "00:00";
   }
 
   const minutes = Math.floor(seconds / 60);
@@ -47,7 +48,7 @@ function convertSecondsToMinutesAndSeconds(seconds) {
 
 async function main() {
   // Get the list of all the songs
-  let songs = await getSongs();
+  songs = await getSongs();
   playMusic(songs[0], true);
 
   //Show all the songs in the playlist
@@ -75,7 +76,6 @@ async function main() {
   ).forEach((e) => {
     e.addEventListener("click", (element) => {
       // console.log(e.getElementsByTagName("div")[0].getElementsByTagName("div")[0].innerHTML);
-      console.log(e.querySelector(".info").firstElementChild.innerHTML);
       playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim());
     });
   });
@@ -93,7 +93,6 @@ async function main() {
 
   //Listen for time update event
   currentSong.addEventListener("timeupdate", () => {
-    console.log(currentSong.currentTime, currentSong.duration);
     document.querySelector(
       ".songtime"
     ).innerHTML = `${convertSecondsToMinutesAndSeconds(
@@ -104,23 +103,49 @@ async function main() {
   });
 
   //Add an event Listener to seekbar
-  document.querySelector(".seekbar").addEventListener("click",e=>{
-    let percent = (e.offsetX/e.target.getBoundingClientRect().width) * 100;
+  document.querySelector(".seekbar").addEventListener("click", (e) => {
+    let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
     document.querySelector(".circle").style.left = percent + "%";
-    currentSong.currentTime = ((currentSong.duration)*percent)/100;
-  })
+    currentSong.currentTime = (currentSong.duration * percent) / 100;
+  });
 
   //Add event listener for hamburger
-  document.querySelector('.hamburger').addEventListener("click", ()=>{
-    document.querySelector('.left').style.left = '0';
-  })
-  
-  //Add event listener for hamburger
-  document.querySelector('.close').addEventListener("click", ()=>{
-    document.querySelector('.left').style.left = '-120%';
-  })
+  document.querySelector(".hamburger").addEventListener("click", () => {
+    document.querySelector(".left").style.left = "0";
+  });
 
+  //Add event listener for close button
+  document.querySelector(".close").addEventListener("click", () => {
+    document.querySelector(".left").style.left = "-120%";
+  });
 
+  //Add an evetn listener for previous and next
+  previous.addEventListener("click", () => {
+    console.log("previous clicked");
+    console.log(currentSong);
+    let index = songs.indexOf(
+      currentSong.src.split("/").slice(-1)[0].split(".")[0]
+    );
+    if (index - 1 >= 0) {
+      playMusic(songs[index - 1]);
+    }
+  });
+
+  //Add an evetn listener for previous and next
+  next.addEventListener("click", () => {
+    console.log("next clicked");
+    let index = songs.indexOf(
+      currentSong.src.split("/").slice(-1)[0].split(".")[0]
+    );
+    if (index + 1 < songs.length) {
+      playMusic(songs[index + 1]);
+    }
+  });
+
+  //Add an event listener to volume
+  document.querySelector(".range").addEventListener("change", (e) => {
+    currentSong.volume = e.target.value / 100;
+  });
 }
 
 main();
