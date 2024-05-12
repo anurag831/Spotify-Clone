@@ -197,13 +197,13 @@ body {
 
 .play svg {
     position: absolute;
-    top: 157px;
-    right: 14px;
+    top: 96px;
+    right: 16px;
     padding: 0;
     width: 50px;
     height: 50px;
     opacity: var(--a);
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .playbar {
@@ -314,6 +314,7 @@ body {
     }
 
     .left {
+        background-color: black;
         position: absolute;
         left: -120%;
         transition: all .3s;

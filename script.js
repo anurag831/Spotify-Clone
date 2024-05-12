@@ -153,6 +153,8 @@ async function main() {
       (currentSong.currentTime / currentSong.duration) * 100 + "%";
   });
 
+
+
   // Add an event Listener to seekbar
   document.querySelector(".seekbar").addEventListener("click", (e) => {
     let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
@@ -193,6 +195,20 @@ async function main() {
     }
   });
 
+  // Auto play the next song
+  currentSong.addEventListener("timeupdate", ()=>{
+    let index = songs.indexOf(
+      currentSong.src.split("/").slice(-1)[0].split(".")[0]
+    );
+  if (currentSong.currentTime == currentSong.duration ) {
+    if (index + 1 < songs.length) {
+      playMusic(songs[index + 1]);
+    }
+  }
+  }
+)
+  
+
   // Add an event listener to volume
   document.querySelector(".range").addEventListener("change", (e) => {
     currentSong.volume = e.target.value / 100;
@@ -213,6 +229,8 @@ async function main() {
       document.querySelector(".range").value = 10;
     }
   })
+
+  
 }
 
 main();
