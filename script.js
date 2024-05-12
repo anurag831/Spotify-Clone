@@ -197,6 +197,22 @@ async function main() {
   document.querySelector(".range").addEventListener("change", (e) => {
     currentSong.volume = e.target.value / 100;
   });
+
+  // Add an event listener to mute and unmute
+  document.querySelector(".volume>img").addEventListener("click", e=>{
+    if(e.target.src.includes("volume.svg")){
+      console.log("hay1")
+      e.target.src = e.target.src.replace("volume.svg", "mute.svg");
+      currentSong.volume = 0;
+      document.querySelector(".range").value = 0;
+    }
+    else{
+      console.log("hay2")
+      e.target.src = e.target.src.replace("mute.svg", "volume.svg");
+      currentSong.volume = 0.10;
+      document.querySelector(".range").value = 10;
+    }
+  })
 }
 
 main();

@@ -178,10 +178,6 @@ body {
     --a:1
 }
 
-.card>* {
-    /* padding-top: 10px; */
-}
-
 .card h2,
 .card p {
     padding-top: 5px;
@@ -400,10 +396,6 @@ body {
         /* height: 40vh; */
         width: 40vw;
     }
-
-    .card img{
-        /* height: 34vh; */
-    }
 }
 
 .timevol {
@@ -422,17 +414,19 @@ body {
 .timevol .volume {
     display: flex;
     gap: 5px;
-    cursor: pointer;
+    
     align-items: center;
     height: max-content;
 }
 
 .volume img {
+    cursor: pointer;
     height: 25px;
     font-weight: 25px;
 }
 
 .volume input {
+    cursor: pointer;
     accent-color: #b8ffc4;
     position: relative;
 }
