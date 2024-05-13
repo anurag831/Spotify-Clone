@@ -31,14 +31,14 @@ async function getSongs(folder) {
   for (const song of songs) {
     songUL.innerHTML =
       songUL.innerHTML +
-      ` <li><img src="music.svg" alt="" class="invert">
+      ` <li><img src="img/music.svg" alt="" class="invert">
                             <div class="info">
                                 <div>${song.replaceAll("%20", " ")}</div>
                                 <div>Anurag</div>
                             </div>
                             <div class="playnow">
                                 <span>Play Now</span>
-                                <img src="play_music.svg" alt="" class="invert">
+                                <img src="img/play_music.svg" alt="" class="invert">
                             </div>
          </li>`;
   }
@@ -60,7 +60,7 @@ const playMusic = (track, pause = false) => {
   currentSong.src = `songs/${currfolder}/` + track + ".mp3";
   if (!pause) {
     currentSong.play();
-    play.src = "pause.svg";
+    play.src = "img/pause.svg";
   }
   document.querySelector(".songinfo").innerHTML = decodeURI(track);
   document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
@@ -136,10 +136,10 @@ async function main() {
   play.addEventListener("click", () => {
     if (currentSong.paused) {
       currentSong.play();
-      play.src = "pause.svg";
+      play.src = "img/pause.svg";
     } else {
       currentSong.pause();
-      play.src = "play.svg";
+      play.src = "img/play.svg";
     }
   });
 
