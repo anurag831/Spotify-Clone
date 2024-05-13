@@ -432,8 +432,11 @@ body {
     position: relative;
 }
 
-@media (max-width: 510px) {
+@media (max-width: 530px) {
     .card{
         width: 59vw;
     }
+    /* .cardContainer{
+        max-height: 51vh;
+    } */
 }

@@ -6,7 +6,7 @@ let currfolder;
 
 async function getSongs(folder) {
   currfolder = folder;
-  let a = await fetch(`http://127.0.0.1:3000/songs/${folder}`);
+  let a = await fetch(`/songs/${folder}`);
   let response = await a.text();
   // console.log(response);
   let div = document.createElement("div");
@@ -81,7 +81,7 @@ function convertSecondsToMinutesAndSeconds(seconds) {
 }
 
 async function displayAlbums() {
-  let a = await fetch(`http://127.0.0.1:3000/songs/`);
+  let a = await fetch(`/songs/`);
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -93,7 +93,7 @@ async function displayAlbums() {
     if (e.href.includes("/songs")) {
       let folder = e.href.split("/").splice(-2)[0];
       // Get the metadata of the folder
-      let a = await fetch(`http://127.0.0.1:3000/songs/${folder}/info.json`);
+      let a = await fetch(`/songs/${folder}/info.json`);
       let response = await a.json();
       // console.log(response);
       cardcContainer.innerHTML =
@@ -119,13 +119,14 @@ async function displayAlbums() {
     e.addEventListener("click", async (item) => {
       // console.log(item.currentTarget.dataset.folder);
       songs = await getSongs(`${item.currentTarget.dataset.folder}`);
+      playMusic(songs[0]);
     });
   });
 }
 
 async function main() {
   // Get the list of all the songs
-  songs = await getSongs(`ncs`);
+  songs = await getSongs(`KK`);
   playMusic(songs[0], true);
 
   // Display all the albums on the page
