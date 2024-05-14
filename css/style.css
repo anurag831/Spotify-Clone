@@ -319,11 +319,11 @@ body {
         left: -120%;
         transition: all .3s;
         z-index: 1;
-        width: 380px;
+        width: 99%;
     }
 
     .left .library {
-        height: 81vh;
+        height: 79vh;
     }
 
     .left .close {
