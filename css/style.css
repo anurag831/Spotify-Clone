@@ -339,7 +339,8 @@ body {
         width: 98vw;
     }
 
-    .playbar {justify-content: center;
+    .playbar {
+        justify-content: center;
         align-items: center;
         padding: 5px;
         flex-direction: column;
@@ -389,6 +390,7 @@ body {
     }
 
     .cardContainer {
+        max-height: calc(90vh - 250px);
         justify-content: center;
         margin: 0;
     }
@@ -432,11 +434,19 @@ body {
     position: relative;
 }
 
-@media (max-width: 530px) {
+@media (max-width: 540px) {
     .card{
         width: 59vw;
     }
     .cardContainer{
-        max-height: 51vh;
+        /* max-height: 76vh; */
+        max-height: calc(86vh - 250px);
+        /* overflow-y: unset; */
+    }
+    .header{
+        padding: 2px;
+    }
+    .buttons{
+        margin: 0 6px;
     }
 }
